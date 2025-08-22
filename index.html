@@ -11,183 +11,179 @@
     <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row mobile-container">
-        <div class="col-md-2 p-0">
-          <div class="sidebar" id="sidebar">
-            <div class="p-3 text-center text-white border-bottom">
-              <h5>Sistema</h5>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+      <div class="p-3 text-center text-white border-bottom">
+        <h5>Sistema</h5>
+      </div>
+      <nav class="nav flex-column">
+        <a class="nav-link active" href="#">Dashboard</a>
+        <a class="nav-link" href="#">Servidores</a>
+        <a class="nav-link" href="#">Alertas</a>
+        <a class="nav-link" href="#">Configurações</a>
+      </nav>
+    </div>
+
+    <div class="main-content">
+      <nav class="navbar navbar-light bg-white border-bottom mb-4">
+        <button
+          class="navbar-toggler d-md-none"
+          type="button"
+          onclick="toggleSidebar()"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand">Monitoramento de Sistemas</span>
+        <span class="text-muted" id="currentTime"></span>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row mb-4">
+          <div class="col-md-4 mb-3">
+            <div class="card metric-card">
+              <div class="card-body">
+                <h5 class="card-title">CPU</h5>
+                <div class="progress-bar-custom mb-2">
+                  <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <p class="mb-0">65% - 2.4 GHz</p>
+              </div>
             </div>
-            <nav class="nav flex-column">
-              <a class="nav-link active" href="#">Dashboard</a>
-              <a class="nav-link" href="#">Servidores</a>
-              <a class="nav-link" href="#">Alertas</a>
-              <a class="nav-link" href="#">Configurações</a>
-            </nav>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="card metric-card">
+              <div class="card-body">
+                <h5 class="card-title">Memória</h5>
+                <div class="progress-bar-custom mb-2">
+                  <div class="progress-fill" style="width: 50%"></div>
+                </div>
+                <p class="mb-0">50% - 4GB/8GB</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="card metric-card">
+              <div class="card-body">
+                <h5 class="card-title">Disco</h5>
+                <div class="progress-bar-custom mb-2">
+                  <div class="progress-fill" style="width: 50%"></div>
+                </div>
+                <p class="mb-0">50% - 250GB/500GB</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-md-10 main-content">
-          <nav class="navbar navbar-light bg-white border-bottom mb-4">
-            <span class="navbar-brand">Monitoramento de Sistemas</span>
-            <span class="text-muted" id="currentTime"></span>
-          </nav>
-
-          <div class="container-fluid">
-            <div class="row mb-4">
-              <div class="col-md-4 mb-3">
-                <div class="card metric-card">
-                  <div class="card-body">
-                    <h5 class="card-title">CPU</h5>
-                    <div class="progress-bar-custom mb-2">
-                      <div class="progress-fill" style="width: 65%"></div>
-                    </div>
-                    <p class="mb-0">65% - 2.4 GHz</p>
-                  </div>
-                </div>
+        <div class="row mb-4">
+          <div class="col-md-8 mb-3">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h5>Gráfico de CPU</h5>
+                <button class="btn btn-sm btn-primary">Atualizar</button>
               </div>
-
-              <div class="col-md-4 mb-3">
-                <div class="card metric-card">
-                  <div class="card-body">
-                    <h5 class="card-title">Memória</h5>
-                    <div class="progress-bar-custom mb-2">
-                      <div class="progress-fill" style="width: 50%"></div>
-                    </div>
-                    <p class="mb-0">50% - 4GB/8GB</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 mb-3">
-                <div class="card metric-card">
-                  <div class="card-body">
-                    <h5 class="card-title">Disco</h5>
-                    <div class="progress-bar-custom mb-2">
-                      <div class="progress-fill" style="width: 50%"></div>
-                    </div>
-                    <p class="mb-0">50% - 250GB/500GB</p>
+              <div class="card-body">
+                <div class="chart-box">
+                  <div class="simple-chart">
+                    <div class="chart-bar" style="height: 60px"></div>
+                    <div class="chart-bar" style="height: 80px"></div>
+                    <div class="chart-bar" style="height: 45px"></div>
+                    <div class="chart-bar" style="height: 90px"></div>
+                    <div class="chart-bar" style="height: 70px"></div>
+                    <div class="chart-bar" style="height: 85px"></div>
+                    <div class="chart-bar" style="height: 65px"></div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="row mb-4">
-              <div class="col-md-8 mb-3">
-                <div class="card">
-                  <div
-                    class="card-header d-flex justify-content-between align-items-center"
-                  >
-                    <h5>Gráfico de CPU</h5>
-                    <button class="btn btn-sm btn-primary">Atualizar</button>
-                  </div>
-                  <div class="card-body">
-                    <div class="chart-box">
-                      <div class="simple-chart">
-                        <div class="chart-bar" style="height: 60px"></div>
-                        <div class="chart-bar" style="height: 80px"></div>
-                        <div class="chart-bar" style="height: 45px"></div>
-                        <div class="chart-bar" style="height: 90px"></div>
-                        <div class="chart-bar" style="height: 70px"></div>
-                        <div class="chart-bar" style="height: 85px"></div>
-                        <div class="chart-bar" style="height: 65px"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h5>Status dos Servidores</h5>
+                <button class="btn btn-sm btn-success">Verificar</button>
               </div>
-
-              <div class="col-md-4 mb-3">
-                <div class="card">
-                  <div
-                    class="card-header d-flex justify-content-between align-items-center"
-                  >
-                    <h5>Status dos Servidores</h5>
-                    <button class="btn btn-sm btn-success">Verificar</button>
-                  </div>
-                  <div class="card-body">
-                    <p>
-                      <span class="status-online">●</span> Servidor Web - Online
-                    </p>
-                    <p>
-                      <span class="status-online">●</span> Banco de Dados -
-                      Online
-                    </p>
-                    <p>
-                      <span class="status-offline">●</span> Servidor Email -
-                      Offline
-                    </p>
-                    <p>
-                      <span class="status-online">●</span> API Gateway - Online
-                    </p>
-                  </div>
-                </div>
+              <div class="card-body">
+                <p>
+                  <span class="status-online">●</span> Servidor Web - Online
+                </p>
+                <p>
+                  <span class="status-online">●</span> Banco de Dados - Online
+                </p>
+                <p>
+                  <span class="status-offline">●</span> Servidor Email - Offline
+                </p>
+                <p><span class="status-online">●</span> API Gateway - Online</p>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div
-                    class="card-header d-flex justify-content-between align-items-center"
-                  >
-                    <h5>Últimos Alertas</h5>
-                    <div>
-                      <button class="btn btn-sm btn-warning me-2">
-                        Limpar
-                      </button>
-                      <button class="btn btn-sm btn-info">Exportar</button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Data/Hora</th>
-                          <th>Servidor</th>
-                          <th>Mensagem</th>
-                          <th>Status</th>
-                          <th>Ações</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>14:32</td>
-                          <td>srv-web-01</td>
-                          <td>CPU acima de 90%</td>
-                          <td><span class="badge bg-danger">Crítico</span></td>
-                          <td>
-                            <button class="btn btn-sm btn-outline-primary">
-                              Ver
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>13:15</td>
-                          <td>srv-email-01</td>
-                          <td>Servidor não responde</td>
-                          <td><span class="badge bg-danger">Crítico</span></td>
-                          <td>
-                            <button class="btn btn-sm btn-outline-primary">
-                              Ver
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>12:45</td>
-                          <td>srv-db-01</td>
-                          <td>Memória RAM alta</td>
-                          <td><span class="badge bg-warning">Alerta</span></td>
-                          <td>
-                            <button class="btn btn-sm btn-outline-primary">
-                              Ver
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h5>Últimos Alertas</h5>
+                <div>
+                  <button class="btn btn-sm btn-warning me-2">Limpar</button>
+                  <button class="btn btn-sm btn-info">Exportar</button>
                 </div>
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Data/Hora</th>
+                      <th>Servidor</th>
+                      <th>Mensagem</th>
+                      <th>Status</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>14:32</td>
+                      <td>srv-web-01</td>
+                      <td>CPU acima de 90%</td>
+                      <td><span class="badge bg-danger">Crítico</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          Ver
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>13:15</td>
+                      <td>srv-email-01</td>
+                      <td>Servidor não responde</td>
+                      <td><span class="badge bg-danger">Crítico</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          Ver
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>12:45</td>
+                      <td>srv-db-01</td>
+                      <td>Memória RAM alta</td>
+                      <td><span class="badge bg-warning">Alerta</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          Ver
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
